@@ -18,9 +18,29 @@ namespace Travel.Controllers
 
     //Get api/reviews
     [HttpGet]
-    public ActionResult<IEnumerable<Review>> Get()
+    public ActionResult<IEnumerable<Review>> Get(string country, string city, string author, int rating)
     {
-      return _db.Reviews.ToList();
+      var query = _db.Reviews.AsQueryable();
+      if (country != null)
+      {
+        query = query.Where(entry => entry.Country == country);
+      }
+
+      if (city != null)
+      {
+        query = query.Where(entry => entry.City == city);
+      }
+
+      if (author != null)
+      {
+        query = query.Where(entry => entry.Author == author);
+      }
+
+      if (rating == 1 || rating == 2 || rating == 3 || rating == 4 || rating == 5)
+      {
+        query = query.Where(entry => entry.Rating == rating);
+      }
+      return query.ToList();
     }
 
     //Post api/reviews
@@ -40,11 +60,11 @@ namespace Travel.Controllers
 
     //Put api/review/5
     [HttpPut("{id")]
-    public void Put (int id, [FromBody] Review review)
+    public void Put(int id, [FromBody] Review review)
     {
-        review.ReviewId = id;
-        _db.Entry(review).State = EntityState.Modified;
-        _db.SaveChanges();
+      review.ReviewId = id;
+      _db.Entry(review).State = EntityState.Modified;
+      _db.SaveChanges();
     }
 
     // DELETE api/review/5
@@ -55,6 +75,5 @@ namespace Travel.Controllers
       _db.Reviews.Remove(reviewToDelete);
       _db.SaveChanges();
     }
-    
   }
 }

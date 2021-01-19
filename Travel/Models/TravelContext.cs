@@ -7,6 +7,7 @@ namespace Travel.Models
     public TravelContext(DbContextOptions<TravelContext> options)
         : base(options)
     {
+      
     }
 
     public DbSet<Review> Reviews { get; set; }
