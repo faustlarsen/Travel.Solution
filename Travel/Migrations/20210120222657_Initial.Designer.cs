@@ -8,8 +8,8 @@ using Travel.Models;
 namespace Travel.Migrations
 {
     [DbContext(typeof(TravelContext))]
-    [Migration("20210119185406_SeedData")]
-    partial class SeedData
+    [Migration("20210120222657_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,15 +23,23 @@ namespace Travel.Migrations
                     b.Property<int>("ReviewId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Author");
+                    b.Property<string>("Author")
+                        .IsRequired()
+                        .HasMaxLength(20);
 
-                    b.Property<string>("City");
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(20);
 
-                    b.Property<string>("Country");
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasMaxLength(20);
 
                     b.Property<int>("Rating");
 
-                    b.Property<string>("Text");
+                    b.Property<string>("ReviewText")
+                        .IsRequired()
+                        .HasMaxLength(1000);
 
                     b.HasKey("ReviewId");
 
@@ -45,7 +53,7 @@ namespace Travel.Migrations
                             City = "Seattle, WA",
                             Country = "USA",
                             Rating = 5,
-                            Text = "Great city"
+                            ReviewText = "Great city"
                         },
                         new
                         {
@@ -54,7 +62,7 @@ namespace Travel.Migrations
                             City = "Los Angeles, CA",
                             Country = "USA",
                             Rating = 4,
-                            Text = "Dirty city"
+                            ReviewText = "Dirty city"
                         },
                         new
                         {
@@ -63,7 +71,7 @@ namespace Travel.Migrations
                             City = "Tucson, Az",
                             Country = "USA",
                             Rating = 3,
-                            Text = "Hot city"
+                            ReviewText = "Hot city"
                         },
                         new
                         {
@@ -72,7 +80,7 @@ namespace Travel.Migrations
                             City = "Tomsk",
                             Country = "Russia",
                             Rating = 2,
-                            Text = "Cold city"
+                            ReviewText = "Cold city"
                         },
                         new
                         {
@@ -81,7 +89,7 @@ namespace Travel.Migrations
                             City = "Mogilev",
                             Country = "Belarus",
                             Rating = 1,
-                            Text = "Terrible city"
+                            ReviewText = "Terrible city"
                         },
                         new
                         {
@@ -90,7 +98,7 @@ namespace Travel.Migrations
                             City = "Minsk",
                             Country = "Belarus",
                             Rating = 1,
-                            Text = "OK city"
+                            ReviewText = "OK city"
                         });
                 });
 #pragma warning restore 612, 618
