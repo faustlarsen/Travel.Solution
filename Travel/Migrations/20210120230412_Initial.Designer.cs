@@ -8,7 +8,7 @@ using Travel.Models;
 namespace Travel.Migrations
 {
     [DbContext(typeof(TravelContext))]
-    [Migration("20210120222657_Initial")]
+    [Migration("20210120230412_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -50,9 +50,9 @@ namespace TravelClient.Models
       var apiCallTask = ApiHelper.Put(review.ReviewId, jsonReview);
     }
 
-    public static void Delete(int id)
-    {
-      var apiCallTask = ApiHelper.Delete(id);
-    }
+    // public static void Delete(int id)
+    // {
+    //   var apiCallTask = ApiHelper.Delete(id);
+    // }
   }
 }
