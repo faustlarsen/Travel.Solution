@@ -87,18 +87,18 @@ public void Put(int id, string user_name, [FromBody] Review review)
 
 }
 
-// DELETE api/review/5
-[HttpDelete("{id}")]
-public void Delete(int id, string user_name, [FromBody] Review review)
-{
-  var reviewToDelete = _db.Reviews.FirstOrDefault(entry => entry.ReviewId == id);
+    // DELETE api/review/5
+    [HttpDelete("{id}")]
+    public void Delete(int id, string user_name, [FromBody] Review review)
+    {
+      var reviewToDelete = _db.Reviews.FirstOrDefault(entry => entry.ReviewId == id);
 
-  review.ReviewId = id;
-  if (review.Author == user_name)
-  {
-    _db.Reviews.Remove(reviewToDelete);
-    _db.SaveChanges();
-  }
-}
+      review.ReviewId = id;
+      if (review.Author == user_name)
+      {
+        _db.Reviews.Remove(reviewToDelete);
+        _db.SaveChanges();
+      }
+    }
   }
 }

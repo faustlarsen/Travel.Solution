@@ -28,11 +28,11 @@ namespace TravelClient.Controllers
       return View(review);
     }
 
-    // public IActionResult Edit(int id)
-    // {
-    //   var review = Review.GetDetails(id);
-    //   return View(review);
-    // }
+    public IActionResult Edit(int id)
+    {
+      var review = Review.GetDetails(id);
+      return View(review);
+    }
 
     [HttpPost]
     public IActionResult Details(int id, Review review)
@@ -42,10 +42,10 @@ namespace TravelClient.Controllers
       return RedirectToAction("Details", id);
     }
 
-    // public IActionResult Delete(int id)
-    // {
-    //   Review.Delete(id);
-    //   return RedirectToAction("Index");
-    // }
+    public IActionResult Delete(int id)
+    {
+      Review.Delete(id);
+      return RedirectToAction("Index");
+    }
   }
 }
